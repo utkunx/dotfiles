@@ -4,6 +4,7 @@
 	"coc.preferences.enableFloatHighlight": true,
 	"coc.preferences.jumpCommand": "edit",
 	"coc.preferences.snippetStatusText": "ext-orn",
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
 	"suggest.timeout": 4000,
 	"suggest.maxCompleteItemCount": 60,
 	"suggest.noselect": true,
