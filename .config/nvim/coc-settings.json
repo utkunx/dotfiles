@@ -1,6 +1,6 @@
 {
 	"tsserver.trace.server": "verbose",
-	"snippets.shortcut": "SS",
+	"snippets.shortcut": "SY",
 	"coc.preferences.enableFloatHighlight": true,
 	"coc.preferences.jumpCommand": "edit",
 	"coc.preferences.snippetStatusText": "ext-orn",
