@@ -506,6 +506,6 @@ xmap ag <Plug>(coc-git-chunk-outer)
 
 
 " cursor reset utku
-set -ga terminal-overrides ',*:Ss=\E[%p1%d q:Se=\E[2 q'
-
+" set -ga terminal-overrides ',*:Ss=\E[%p1%d q:Se=\E[2 q'
+" it is not working
 
