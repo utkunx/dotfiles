@@ -1,3 +1,45 @@
 [submodule ".config/nvim/plugged/bclose.vim"]
 	path = .config/nvim/plugged/bclose.vim
 	url = https://github.com/rbgrouleff/bclose.vim
+[submodule ".config/nvim/plugged/nerdtree"]
+	path = .config/nvim/plugged/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule ".config/nvim/plugged/ranger.vim"]
+	path = .config/nvim/plugged/ranger.vim
+	url = https://github.com/francoiscabrol/ranger.vim.git
+[submodule ".config/nvim/plugged/night-owl.vim"]
+	path = .config/nvim/plugged/night-owl.vim
+	url = https://github.com/haishanh/night-owl.vim.git
+[submodule ".config/nvim/plugged/rainbow_parentheses.vim"]
+	path = .config/nvim/plugged/rainbow_parentheses.vim
+	url = https://github.com/junegunn/rainbow_parentheses.vim.git
+[submodule ".config/nvim/plugged/lightline.vim"]
+	path = .config/nvim/plugged/lightline.vim
+	url = https://github.com/itchyny/lightline.vim.git
+[submodule ".config/nvim/plugged/vim-better-whitespace"]
+	path = .config/nvim/plugged/vim-better-whitespace
+	url = https://github.com/ntpeters/vim-better-whitespace.git
+[submodule ".config/nvim/plugged/vim-polyglot"]
+	path = .config/nvim/plugged/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
+[submodule ".config/nvim/plugged/vim-svelte"]
+	path = .config/nvim/plugged/vim-svelte
+	url = https://github.com/evanleck/vim-svelte.git
+[submodule ".config/nvim/plugged/vim-mma"]
+	path = .config/nvim/plugged/vim-mma
+	url = https://github.com/voldikss/vim-mma.git
+[submodule ".config/nvim/plugged/vista.vim"]
+	path = .config/nvim/plugged/vista.vim
+	url = https://github.com/liuchengxu/vista.vim.git
+[submodule ".config/nvim/plugged/vim-snippets"]
+	path = .config/nvim/plugged/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule ".config/nvim/plugged/neosnippet.vim"]
+	path = .config/nvim/plugged/neosnippet.vim
+	url = https://github.com/Shougo/neosnippet.vim.git
+[submodule ".config/nvim/plugged/neosnippet-snippets"]
+	path = .config/nvim/plugged/neosnippet-snippets
+	url = https://github.com/Shougo/neosnippet-snippets.git
+[submodule ".config/nvim/plugged/coc.nvim"]
+	path = .config/nvim/plugged/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
