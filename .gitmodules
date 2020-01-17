@@ -1,0 +1,3 @@
+[submodule ".config/nvim/plugged/bclose.vim"]
+	path = .config/nvim/plugged/bclose.vim
+	url = https://github.com/rbgrouleff/bclose.vim
