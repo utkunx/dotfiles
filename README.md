@@ -1,1 +1,7 @@
 # dotfiles
+
+# ide
+
+## editor
+
+##### nvim
