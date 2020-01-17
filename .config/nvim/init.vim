@@ -75,8 +75,8 @@ syntax enable
 " colorscheme tender
 colorscheme night-owl
 
-au! BufNewFile,BufRead *.svelte set ft=html
-
+" au! BufNewFile,BufRead *.svelte set ft=html
+" testing something diffrent...
 
 " 10 - coc - plugin manager
 function! CocCurrentFunction()

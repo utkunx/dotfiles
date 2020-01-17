@@ -1,6 +1,9 @@
 {
 	"tsserver.trace.server": "verbose",
-	"snippets.shortcut": "C-S",
+	"snippets.shortcut": "SS",
+	"coc.preferences.enableFloatHighlight": true,
+	"coc.preferences.jumpCommand": "edit",
+	"coc.preferences.snippetStatusText": "ext-orn",
 	"suggest.timeout": 4000,
 	"suggest.maxCompleteItemCount": 60,
 	"suggest.noselect": true,
