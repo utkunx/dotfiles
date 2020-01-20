@@ -1,3 +1,12 @@
+" vim: filetype=vim
+
+
+" File: init.vim
+" Author: utkunx
+" Description: coc focused cofing file 
+" Last Modified: January 19, 2020
+
+
 call plug#begin()
 
 " 40 - colorscheme nighthtowl		
@@ -10,7 +19,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'honza/vim-snippets'
 " 62 new thing
 Plug 'mhinz/vim-startify'
-
+" svelte
+Plug 'evanleck/vim-svelte'
 
 Plug 'Tpope/vim-commentary'
 Plug 'Valloric/MatchTagAlways', {'for': 'html'}
@@ -19,7 +29,6 @@ Plug 'tpope/vim-surround'
 Plug 'qpkorr/vim-bufkill'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -211,6 +220,11 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+" utku shourtcut
+" set the mapping to open Startify
+nnoremap <silent> <space>x :Startify<CR>
+
+
 
 
 function! CocCurrentFunction()
@@ -251,8 +265,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}%{StatusDiagn
 
 
 
-" Startify
-"
+" Startify header
 let g:startify_custom_header = [
             \ '       ______   __                  __     __  __               ',
             \ '      /      \ |  \                |  \   |  \|  \              ',
