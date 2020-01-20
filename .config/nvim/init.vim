@@ -9,18 +9,28 @@
 
 call plug#begin()
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}      
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 " 40 - colorscheme nighthtowl		
 Plug 'haishanh/night-owl.vim'
+" 41 - rainbow parantesish
+Plug 'junegunn/rainbow_parentheses.vim'
 " 42 - statusline function color
 Plug 'itchyny/lightline.vim'
+" 43 - show whitespaces in red
+Plug 'ntpeters/vim-better-whitespace'
 " 44 - language highlighting
 Plug 'sheerun/vim-polyglot'
+" 45 - plus svelte highlighting
+Plug 'evanleck/vim-svelte'
+" 47 - vista, view and search LSP symbols...
+Plug 'liuchengxu/vista.vim'
+
 " 61 - testing testing
 Plug 'honza/vim-snippets'
 " 62 new thing
 Plug 'mhinz/vim-startify'
-" svelte
-Plug 'evanleck/vim-svelte'
 
 Plug 'Tpope/vim-commentary'
 Plug 'Valloric/MatchTagAlways', {'for': 'html'}
@@ -29,9 +39,9 @@ Plug 'tpope/vim-surround'
 Plug 'qpkorr/vim-bufkill'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'junegunn/fzf.vim'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
 
 call plug#end()
 
@@ -222,7 +232,22 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " utku shourtcut
 " set the mapping to open Startify
-nnoremap <silent> <space>x :Startify<CR>
+
+nnoremap <silent> <space>[ :CocCommand explorer<CR>
+nnoremap <silent> <space>] :Vista!!<CR>
+nnoremap <silent> <space>\ :Startify<CR>
+
+nnoremap <silent> <space>; <C-w>w
+nnoremap <silent> <space>' <C-w>q
+nnoremap <silent> <space>. :tabprev<CR>
+nnoremap <silent> <space>/ :tabnext<CR>
+
+" nvim.coc base keymap
+" Tab Managment
+"  map <C-o> :tabnew<CR>
+"  map <C-D> :tabclose<CR>
+"  map <C-j> :tabprev<CR>
+"  map <C-k> :tabnext<CR>
 
 
 
@@ -231,15 +256,24 @@ function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
 endfunction
 
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
 let g:lightline = {
       \ 'colorscheme': 'nightowl',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified', 'method' ] ]
       \ },
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
       \   'currentfunction': 'CocCurrentFunction',
+      \   'method' : 'NearestMethodOrFunction'
       \ },
       \ }
 
@@ -283,3 +317,38 @@ let g:startify_custom_header = [
 
 
 
+" utku vista try 1
+let g:vista_default_executive = 'ctags'
+
+let g:vista_executive_for = {
+  \ 'go': 'ctags',
+  \ 'svelte': 'coc',
+  \ 'javascript': 'coc',
+  \ 'typescript': 'coc',
+  \ 'javascript.jsx': 'coc',
+  \ 'python': 'coc',
+  \ 'cpp': 'vim_lsp',
+  \ 'php': 'vim_lsp',
+  \ }
+
+" Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
+let g:vista#renderer#enable_icon = 1
+
+" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
+
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+" let g:vista_fzf_preview = ['right:50%']
+
+if executable('typescript-language-server')
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'typescript-language-server',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+      \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+      \ 'whitelist': ['typescript', 'typescript.tsx'],
+      \ })
+endif
