@@ -2,11 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 DEFAULT_USER=$USER
 # Path to your oh-my-zsh installation.
-source /usr/share/nvm/init-nvm.sh
 
 export ZSH=$HOME/.oh-my-zsh
 export PATH="$PATH:`yarn global bin`"
-source ~/perl5/perlbrew/etc/bashrc
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -22,8 +20,8 @@ ZSH_THEME="spaceship"
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-SPACESHIP_PROMPT_ADD_NEWLINE="false"
-ZSH_TMUX_AUTOSTART="true"
+#export SPACESHIP_PROMPT_ADD_NEWLINE="false"
+# ZSH_TMUX_AUTOSTART="true"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -71,7 +69,10 @@ ZSH_TMUX_AUTOSTART="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+export FZF_BASE=/home/utku2/.fzf/bin/fzf
 
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -79,7 +80,6 @@ ZSH_TMUX_AUTOSTART="true"
 # Add wisely, as too many plugins slow down shell startup.
 
 plugins=(
-	tmux
 	git
 	dotenv
 	archlinux
@@ -87,22 +87,19 @@ plugins=(
 	nvm
 	npm
 	yarn
-	docker
+  fzf
 	zsh-navigation-tools
 	zsh-autosuggestions
-	zsh-history-substring-search
-	zsh-syntax-highlighting
-)
-# autoload -U compinit && compinit
-# eskiler
-#autoload -Uz compinit
-#compinit
+  zsh-syntax-highlighting
+	history-substring-search
+	)
+
 autoload -U promptinit; promptinit
 prompt spaceship
 
 
 # Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
+#kitty + complete setup zsh | source /dev/stdin
 source $ZSH/oh-my-zsh.sh
 #autoload predict-on
 #predict-on
@@ -147,5 +144,7 @@ export LANG=en_US.UTF-8
 
 
 
-
+source /usr/share/fzf-marks/fzf-marks.zsh
+source ~/perl5/perlbrew/etc/bashrc
+source /usr/share/nvm/init-nvm.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

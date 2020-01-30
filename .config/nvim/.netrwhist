@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =0
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/utku2/Work/carbon-components-svelte'
+let g:netrw_dirhist_1='/home/utku2/Desktop/hanadockdev'
 let g:netrw_dirhist_0='/home/utku2/Work/saleor-storefront/src'
 let g:netrw_dirhist_9='/home/utku2/.config/kitty/kitty-themes/.tools'
 let g:netrw_dirhist_8='/home/utku2/.config/kitty/kitty-themes'
@@ -8,5 +10,3 @@ let g:netrw_dirhist_6='/home/utku2/.config/kitty/kitty-themes'
 let g:netrw_dirhist_5='/home/utku2/.config/kitty/kitty-themes/themes'
 let g:netrw_dirhist_4='/home/utku2/.config/kitty/kitty-themes'
 let g:netrw_dirhist_3='/home/utku2/.config/kitty/kitty-themes/.tools'
-let g:netrw_dirhist_2='/home/utku2/.config/kitty/kitty-themes'
-let g:netrw_dirhist_1='/home/utku2/.config/kitty/kitty-themes/.tools'

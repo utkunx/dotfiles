@@ -1,18 +1,30 @@
 " vim: filetype=vim
-
-
 " File: init.vim
 " Author: utkunx
-" Description: coc focused cofing file 
+" Description: coc focused cofing file
 " Last Modified: January 19, 2020
-
 
 call plug#begin()
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}      
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" 99
+"
+" - coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"    - keymap kisa yollar
+Plug 'liuchengxu/vim-which-key'
+"    - fuzzy finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " File navigation, similar to Ctrl+p hotkey in vscode
+Plug 'junegunn/fzf.vim'
+"
+" 99
 
-" 40 - colorscheme nighthtowl		
+" tester tester
+" Plug 'kkoomen/vim-doge'
+" kullanmayi beceremedik
+" Markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+
+" 40 - colorscheme nighthtowl
 Plug 'haishanh/night-owl.vim'
 " 41 - rainbow parantesish
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -31,7 +43,18 @@ Plug 'liuchengxu/vista.vim'
 Plug 'honza/vim-snippets'
 " 62 new thing
 Plug 'mhinz/vim-startify'
+" i3 config color
+Plug 'mboughaba/i3config.vim'
 
+" 40 - colorsheme
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'mswift42/vim-themes'
+" 40 - colorsheme switcher bundle
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-colorscheme-switcher'
+
+" ???
 Plug 'Tpope/vim-commentary'
 Plug 'Valloric/MatchTagAlways', {'for': 'html'}
 Plug 'editorconfig/editorconfig-vim'
@@ -39,19 +62,45 @@ Plug 'tpope/vim-surround'
 Plug 'qpkorr/vim-bufkill'
 Plug 'airblade/vim-gitgutter'
 
-
+" ???
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 
+" 75 - Editorconfig file support. see https://editorconfig.org/
+Plug 'editorconfig/editorconfig-vim'
+
+" 44 - code colorfull export
+Plug 'kristijanhusak/vim-carbon-now-sh'
+
+
+" 10 - startup time debug
+Plug 'dstein64/vim-startuptime'
+
 call plug#end()
 
-" very important...
+" colorscheme nova
+set background=dark
+set termguicolors
+"5 yildiz
+colorscheme PaperColor
+
 " help key-notation
 
 " General Settings
 " Do not worry too much about what this does, I don't have a clue either :^)
 filetype plugin indent on
 syntax on
+
+
+" 3 yildiz
+"colorscheme spacecamp
+"colorscheme spacecamp_lite
+
+" otomatik dosyayi yenile
+set autoread
+au CursorHold * checktime
+
+
 set encoding=utf-8
 set tabstop=2
 set expandtab
@@ -96,15 +145,151 @@ set laststatus=2
 " always show signcolumns
 set signcolumn=yes
 
-set termguicolors	" make vim use 24-bit colors in supported terminals
-set background=light	" make the colorscheme use a light variant
-colorscheme night-owl	" set the colorscheme to base16-tomorrow
-
 set noea		" Stop resizing split windows
 set noswapfile		" Prevent vim from creating .swp files
 
-" set space as my leader key
-let mapleader = "\<Space>"
+" code export
+vnoremap <F5> :CarbonNowSh<CR>
+
+
+" WhichKey config begins...
+"
+" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+"
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+" time needed for display to come up
+set timeoutlen=500
+
+call which_key#register('<Space>', "g:which_key_map")
+
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
+" Define prefix dictionary
+let g:which_key_map =  {
+      \ 'name' : '+Masterkeys' ,
+      \ '1' : [':$tabnew +terminal'  , 'new-tab-terminal-end']     ,
+      \ '2' : ['tabnew'  , 'new-tab']     ,
+      \ '3' : ['tabprev'  , 'previous-tab']     ,
+      \ '4' : ['tabnext'  , 'next-tab']     ,
+      \ '5' : ['new', 'horizontal-window']     ,
+      \ '6' : ['vnew', 'vertical-window']     ,
+      \ '7' : [':so %', 'reload-config']     ,
+      \ '8' : [':update', 'save-file1']     ,
+      \ 'l' : ['<C-W>p', '???previous-window']     ,
+      \ ';' : ['<C-W>w', '???previous???']     ,
+      \ 'q' : ['cq', '???quit']     ,
+      \ '[' : [':CocCommand explorer'     , 'coc-explorer']          ,
+      \ ']' : [':Vista!!'     , 'vista-symbols']         ,
+      \ '\' : [':Startify'     , 'home-screen']    ,
+      \ 'g' : [':CocList --normal gstatus'     , 'Coclist-normal-gstatus']    ,
+      \ 'a' : [':CocList diagnostics'     , 'Coclist-diagnostics']    ,
+      \ 'e' : [':CocList extensions'     , 'Coclist-extensions']    ,
+      \ 'c' : [':CocList commands'     , 'Coclist-commands']    ,
+      \ 'o' : [':CocList outline'     , 'Coclist-outline']    ,
+      \ 's' : [':CocList -I symbols'     , 'Coclist-symbols']    ,
+      \ 'j' : [':CocNext'     , 'CocNext']    ,
+      \ 'k' : [':CocPrev'     , 'CocPrev']    ,
+      \ 'p' : [':CocListResume'     , 'CocListResume']    ,
+      \ 'm' : [':CocCommand session.save'     , 'session.save']    ,
+      \ ',' : [':CocCommand session.load'     , 'session.load']    ,
+      \}
+
+" suan cozum bulamam
+nnoremap <silent> <space>' <C-w>q
+
+" ozel kopyalari
+"
+let g:which_key_map['t'] = {
+      \ 'name' : '+coc-sample' ,
+      \ '[' : [':CocCommand explorer'     , 'coc-explorer']          ,
+      \ ']' : [':Vista!!'     , 'vista-symbols']         ,
+      \ '\' : [':Startify'     , 'startify']    ,
+      \ 'g' : [':CocList --normal gstatus'     , 'Coclist-normal-gstatus']    ,
+      \ 'a' : [':CocList diagnostics'     , 'Coclist-diagnostics']    ,
+      \ 'e' : [':CocList extensions'     , 'Coclist-extensions']    ,
+      \ 'c' : [':CocList commands'     , 'Coclist-commands']    ,
+      \ 'o' : [':CocList outline'     , 'Coclist-outline']    ,
+      \ 's' : [':CocList -I symbols'     , 'Coclist-symbols']    ,
+      \ 'j' : [':CocNext'     , 'CocNext']    ,
+      \ 'k' : [':CocPrev'     , 'CocPrev']    ,
+      \ 'p' : [':CocListResume'     , 'CocListResume']    ,
+      \ 'm' : [':CocCommand session.save'     , 'session.save']    ,
+      \ ',' : [':CocCommand session.load'     , 'session.load']    ,
+      \ }
+
+" call plug#(coc#expandable()  
+
+" Use `[g` and `]g` to navigate diagnostics
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+
+
+
+
+" Second level dictionaries:
+" 'name' is a special field. It will define the name of the group, e.g., leader-f is the "+file" group.
+" Unnamed groups will show a default empty string.
+
+" =======================================================
+" Create menus based on existing mappings
+" =======================================================
+" You can pass a descriptive text to an existing mapping.
+
+let g:which_key_map.f = { 'name' : '+file' }
+
+nnoremap <silent> <leader>fs :update<CR>
+let g:which_key_map.f.s = 'save-file'
+
+nnoremap <silent> <leader>fd :e $MYVIMRC<CR>
+let g:which_key_map.f.d = 'open-vimrc'
+
+nnoremap <silent> <leader>oq  :copen<CR>
+nnoremap <silent> <leader>ol  :lopen<CR>
+let g:which_key_map.o = {
+      \ 'name' : '+open',
+      \ 'q' : 'open-quickfix'    ,
+      \ 'l' : 'open-locationlist',
+      \ }
+
+" utku svelte config
+"au! BufNewFile,BufRead *.svelte set ft=html
+" sanirim coc u bozdu
+
+
+let g:which_key_map['w'] = {
+      \ 'name' : '+windows' ,
+      \ 'w' : ['<C-W>w'     , 'other-window']          ,
+      \ 'd' : ['<C-W>c'     , 'delete-window']         ,
+      \ '-' : ['<C-W>s'     , 'split-window-below']    ,
+      \ '|' : ['<C-W>v'     , 'split-window-right']    ,
+      \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
+      \ 'h' : ['<C-W>h'     , 'window-left']           ,
+      \ 'j' : ['<C-W>j'     , 'window-below']          ,
+      \ 'l' : ['<C-W>l'     , 'window-right']          ,
+      \ 'k' : ['<C-W>k'     , 'window-up']             ,
+      \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
+      \ 'J' : ['resize +5'  , 'expand-window-below']   ,
+      \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
+      \ 'K' : ['resize -5'  , 'expand-window-up']      ,
+      \ '=' : ['<C-W>='     , 'balance-window']        ,
+      \ 's' : ['<C-W>s'     , 'split-window-below']    ,
+      \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
+      \ '?' : ['Windows'    , 'fzf-window']            ,
+      \ }
+" WhichKey config finished...
+"
 
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
@@ -136,6 +321,7 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
 " Use <c-space>: to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -211,47 +397,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-nnoremap <silent> <space>g :<C-u>CocList --normal gstatus<CR>
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-" utku shourtcut
-" set the mapping to open Startify
-
-nnoremap <silent> <space>[ :CocCommand explorer<CR>
-nnoremap <silent> <space>] :Vista!!<CR>
-nnoremap <silent> <space>\ :Startify<CR>
-
-nnoremap <silent> <space>; <C-w>w
-nnoremap <silent> <space>' <C-w>q
-nnoremap <silent> <space>. :tabprev<CR>
-nnoremap <silent> <space>/ :tabnext<CR>
-
-" nvim.coc base keymap
-" Tab Managment
-"  map <C-o> :tabnew<CR>
-"  map <C-D> :tabclose<CR>
-"  map <C-j> :tabprev<CR>
-"  map <C-k> :tabnext<CR>
-
-
-
-
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
 endfunction
@@ -265,7 +410,7 @@ set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 let g:lightline = {
-      \ 'colorscheme': 'nightowl',
+      \ 'colorscheme': 'challenger_deep',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified', 'method' ] ]
@@ -278,7 +423,7 @@ let g:lightline = {
       \ }
 
 
-" Use auocmd to force lightline update.                                                                             
+" Use auocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 function! StatusDiagnostic() abort
@@ -316,6 +461,13 @@ let g:startify_custom_header = [
             \ ]
 
 
+let g:startify_lists = [
+          \ { 'type': 'sessions',  'header': ['   Sessions']       },
+          \ { 'type': 'files',     'header': ['   MRU']            },
+          \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+          \ { 'type': 'commands',  'header': ['   Commands']       },
+          \ ]
 
 " utku vista try 1
 let g:vista_default_executive = 'ctags'
@@ -330,6 +482,8 @@ let g:vista_executive_for = {
   \ 'cpp': 'vim_lsp',
   \ 'php': 'vim_lsp',
   \ }
+
+let g:startify_session_dir = '~/.vim/sessions'
 
 " Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
 let g:vista#renderer#enable_icon = 1
@@ -352,3 +506,46 @@ if executable('typescript-language-server')
       \ 'whitelist': ['typescript', 'typescript.tsx'],
       \ })
 endif
+
+
+
+let g:colorscheme_switcher_keep_background = 1
+let g:colorscheme_switcher_command = ':colorscheme'
+augroup LightlineColorscheme
+		  autocmd!
+		  autocmd ColorScheme * call s:lightline_update()
+		augroup END
+
+
+		function! s:lightline_update()
+		  if !exists('g:loaded_lightline')
+		    return
+		  endif
+		  try
+		    	let g:lightline.colorscheme =
+		        \ substitute(substitute(g:colors_name, '-', '_', 'g'), '256.*', '', '')
+		      call lightline#init()
+		      call lightline#colorscheme()
+		      call lightline#update()
+		  catch
+		  endtry
+		endfunction
+
+
+
+  " terminal config
+" Maps ESC to exit terminal's insert mode
+  if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+  endif
+
+" also removed the number lines and got terminal buffers to automatically enter into insert mode with
+ augroup neovim_terminal
+    autocmd!
+
+    " Enter Terminal-mode (insert) automatically
+    autocmd TermOpen * startinsert
+
+    " Disables number lines on terminal buffers
+    autocmd TermOpen * :set nonumber norelativenumber
+  augroup END

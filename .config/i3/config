@@ -1,3 +1,5 @@
+# vim: filetype=i3config
+
 #################
 # Set your apps #
 #################
@@ -352,37 +354,59 @@
 # Key Bindings (scripts) #
 ##########################
 	bindsym $Mod+$Moe+d exec --no-startup-id ~/.scripts/dysk.sh
-	bindsym $Mod+$Moe+c exec --no-startup-id ~/.scripts/compton.sh --toggle
-	bindsym $Mod+$Moe+v exec --no-startup-id ~/.scripts/files.sh
-	bindsym $Mod+$Moe+w exec --no-startup-id ~/.scripts/wallpaper.sh
-	bindsym $Mod+$Moe+e exec --no-startup-id ~/.scripts/dmenu-unicode.sh
+#	bindsym $Mod+$Moe+c exec --no-startup-id ~/.scripts/compton.sh --toggle
+# bindsym $Mod+$Moe+v exec --no-startup-id ~/.scripts/files.sh #
+#	bindsym $Mod+$Moe+w exec --no-startup-id ~/.scripts/wallpaper.sh #
+#	bindsym $Mod+$Moe+e exec --no-startup-id ~/.scripts/dmenu-unicode.sh #
 
+####
+# my config #
+bindsym $Mod+Return exec kitty
+
+
+bindsym $Mod+f exec --no-startup-id kitty tmux
+bindsym $Mod+Shift+Return exec kitty nvim
+bindsym $Mod+c exec --no-startup-id chromium
+
+# bindsym $Mod+f exec --no-startup-id kitty nvim -c ":terminal"
+
+bindsym $Mod+p exec --no-startup-id ~/.scripts/app/applications.sh thunar
+
+
+# bindsym $Mod+$Moe+v exec --no-startup-id kitty
 
 #########################
 # Applications Bindings #
 #########################
-	bindsym $Mod+Return exec kitty
-	#utkunun bin bash yedegi #
-	# bindsym $mod+Shift+Return exec kitty /bin/bash #
-	bindsym $Mod+Shift+Return exec --no-startup-id /home/utku2/Documents/final.sh
-	bindsym $mod+Shift+p exec i3-layout-manager yeni1
-	# bindsym $mod+Shift+Return exec kitty sudo wifi-menu #
-	bindsym $mod+Shift+k exec kitty sudo brillo -S 100
-	bindsym $mod+Shift+j exec kitty sudo brillo -S 45
-	bindsym $mod+Shift+l exec --no-startup-id webstorm
-	#bindsym $Mod+c exec --no-startup-id ~/.scripts/app/chrome.sh yedek#
-	#bindsym $Mod+c exec --no-startup-id /home/utku2/Documents/chrome.sh#
-	bindsym $Mod+c exec --no-startup-id chromium
-	bindsym $Mod+f exec --no-startup-id ~/.scripts/app/applications.sh caprine
+
+#  bindsym $mod+Shift+p exec i3-layout-manager yeni1 #
+
+bindsym $mod+Shift+k exec kitty sudo brillo -S 100
+bindsym $mod+Shift+j exec kitty sudo brillo -S 45
+
+  # bindsym $mod+Shift+l exec --no-startup-id webstorm
+
+
+
+#  bindsym $Mod+f exec --no-startup-id ~/.scripts/app/applications.sh caprine
 	bindsym $Mod+t exec --no-startup-id ~/.scripts/app/dmenu-messengers.sh
 	bindsym $Moe+w exec --no-startup-id networkmanager_dmenu
 	bindsym $Moe+Shift+w exec --no-startup-id nmcli d wifi &> /dev/null && networkmanager_dmenu
-	bindsym $Mod+p exec --no-startup-id ~/.scripts/app/applications.sh thunar
 	bindsym $Mod+s exec --no-startup-id ~/.scripts/app/AppForS.sh
 	bindsym $Mod+g exec --no-startup-id ~/.scripts/app/now-open.sh gimp
-	#bindsym $Mod+b exec --no-startup-id calibre#
 	bindsym $Moe+Shift+p exec --no-startup-id com.github.ronnydo.colorpicker
 
+
+# yedekler #
+
+#utkunun bin bash yedegi #
+# bindsym $mod+Shift+Return exec kitty /bin/bash #
+# bindsym $mod+Shift+Return exec kitty sudo wifi-menu #
+# bindsym $Mod+Shift+Return exec --no-startup-id /home/utku2/Documents/final.sh #
+#bindsym $mod+Shift+l exec --no-startup-id webstorm #
+#bindsym $Mod+c exec --no-startup-id ~/.scripts/app/chrome.sh yedek#
+#bindsym $Mod+c exec --no-startup-id /home/utku2/Documents/chrome.sh#
+#bindsym $Mod+b exec --no-startup-id calibre#
 
 #########################
 # Applications settings #
