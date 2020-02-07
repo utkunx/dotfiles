@@ -6,21 +6,49 @@
 
 call plug#begin()
 
-" 99
-"
-" - coc
+" yeni denemeler
+
+" === Editing Plugins === "
+" Trailing whitespace highlighting & automatic fixing
+Plug 'ntpeters/vim-better-whitespace'
+" 43 - show whitespaces in red
+
+" auto-close plugin
+Plug 'rstacruz/vim-closer'
+
+" Improved motion in Vim
+Plug 'easymotion/vim-easymotion'
+
+" Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"    - keymap kisa yollar
+
+" Denite - Fuzzy finding, buffer management
+Plug 'Shougo/denite.nvim'
+
+" Snippet support
+"Plug 'Shougo/neosnippet'
+"Plug 'Shougo/neosnippet-snippets'
+
+" Print function signatures in echo area
+Plug 'Shougo/echodoc.vim'
+
+
+
+" 99 - keymap kisa yollar
 Plug 'liuchengxu/vim-which-key'
-"    - fuzzy finder
+" 99 - fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " File navigation, similar to Ctrl+p hotkey in vscode
 Plug 'junegunn/fzf.vim'
-"
-" 99
+
 
 " tester tester
+Plug 'heavenshell/vim-jsdoc'
+Plug 'pangloss/vim-javascript'
 " Plug 'kkoomen/vim-doge'
 " kullanmayi beceremedik
+
+
+
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
@@ -30,8 +58,7 @@ Plug 'haishanh/night-owl.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 " 42 - statusline function color
 Plug 'itchyny/lightline.vim'
-" 43 - show whitespaces in red
-Plug 'ntpeters/vim-better-whitespace'
+
 " 44 - language highlighting
 Plug 'sheerun/vim-polyglot'
 " 45 - plus svelte highlighting
@@ -57,14 +84,13 @@ Plug 'xolox/vim-colorscheme-switcher'
 " ???
 Plug 'Tpope/vim-commentary'
 Plug 'Valloric/MatchTagAlways', {'for': 'html'}
-Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
-Plug 'qpkorr/vim-bufkill'
+" Plug 'qpkorr/vim-bufkill' bu ibnemi lan beni bozan ??
 Plug 'airblade/vim-gitgutter'
 
 " ???
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
+"Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/vim-lsp'
 
 " 75 - Editorconfig file support. see https://editorconfig.org/
 Plug 'editorconfig/editorconfig-vim'
@@ -76,13 +102,16 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 " 10 - startup time debug
 Plug 'dstein64/vim-startuptime'
 
+
+
+
 call plug#end()
 
 " colorscheme nova
 set background=dark
 set termguicolors
 "5 yildiz
-colorscheme PaperColor
+colorscheme ayu
 
 " help key-notation
 
@@ -100,38 +129,98 @@ syntax on
 set autoread
 au CursorHold * checktime
 
+" Disable line numbers
+set nonumber
 
-set encoding=utf-8
-set tabstop=2
+" Don't show last command
+set noshowcmd
+
+" Yank and paste with the system clipboard
+set clipboard=unnamed
+
+" Hides buffers instead of closing them
+set hidden
+
+" === TAB/Space settings === "
+" Insert spaces when TAB is pressed.
 set expandtab
-set autoindent
+
+" Change number of spaces that a <Tab> counts for during editing ops
+set softtabstop=2
+
+" Indentation amount for < and > commands.
 set shiftwidth=2
+
+" do not wrap long lines by default
+set nowrap
+
+" Don't highlight current cursor line
+set nocursorline
+
+" Disable line/column number in status line
+" Shows up in preview window when airline is disabled if not
+set noruler
+
+" Only one line for command line
+set cmdheight=1
+
+" === Completion Settings === "
+
+" Don't give completion messages like 'match 1 of 2'
+" or 'The only match'
+set shortmess+=c
+
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python'
+" Scan the following dirs recursively for tags
+let g:project_tags_dirs = ['kitty']
+let g:syntastic_python_flake8_exec = 'flake8'
+let g:ycm_python_binary_path = 'python'
+set wildignore+==template.py
+set wildignore+=tags
+" set expandtab
+set tabstop=4
+"set shiftwidth=4
+"set softtabstop=0
+set smarttab
+"python <<endpython
+"import sys
+"sys.path.insert(0, os.path.abspath('.'))
+"import kitty
+"endpython
+
+" set clipboard^=unnamed
+set encoding=utf-8
+" set tabstop=2
+" set expandtab
+set autoindent
+" set shiftwidth=2
 set scrolloff=3
-set showcmd
+" set showcmd
 set hidden
 set wildmenu
 set visualbell
 set splitbelow
 set ttyfast
-set ruler
+" set ruler
 set backspace=indent,eol,start
-set number
+" set number
 set ignorecase
 set smartcase
 set gdefault
 set incsearch
 set showmatch
 set hlsearch
-set wrap
+" set wrap
 set linebreak
 set nolist
-set shortmess+=c
+" set shortmess+=c
 " Some servers have issues with backup files, see #649
 set nobackup
 set nowritebackup
 
 " Better display for messages
-set cmdheight=2
+"set cmdheight=2
 
 set mouse=a
 
@@ -141,7 +230,8 @@ set updatetime=300
 " lightline config
 set noshowmode
 set laststatus=2
-
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = "echo"
 " always show signcolumns
 set signcolumn=yes
 
@@ -171,12 +261,13 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 " Define prefix dictionary
 let g:which_key_map =  {
       \ 'name' : '+Masterkeys' ,
+      \ 'n' : [':CocCommand prettier.formatFile'     , '040-format-pretier']    ,
       \ '1' : [':$tabnew +terminal'  , 'new-tab-terminal-end']     ,
       \ '2' : ['tabnew'  , 'new-tab']     ,
       \ '3' : ['tabprev'  , 'previous-tab']     ,
       \ '4' : ['tabnext'  , 'next-tab']     ,
       \ '5' : ['new', 'horizontal-window']     ,
-      \ '6' : ['vnew', 'vertical-window']     ,
+      \ '6' : ['vsplit', 'vertical-window']     ,
       \ '7' : [':so %', 'reload-config']     ,
       \ '8' : [':update', 'save-file1']     ,
       \ 'l' : ['<C-W>p', '???previous-window']     ,
@@ -234,10 +325,16 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-
-
-
-
+" === Denite shorcuts === "
+"   ;         - Browser currently open buffers
+"   <leader>t - Browse list of files in current directory
+"   <leader>g - Search current directory for occurences of given term and
+"   close window if no results
+"   <leader>j - Search current directory for occurences of word under cursor
+nmap ; :Denite buffer -split=floating -winrow=1<CR>
+nmap <leader>t :Denite file/rec -split=floating -winrow=1<CR>
+nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
+nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
 " Second level dictionaries:
 " 'name' is a special field. It will define the name of the group, e.g., leader-f is the "+file" group.
 " Unnamed groups will show a default empty string.
@@ -549,3 +646,32 @@ augroup LightlineColorscheme
     " Disables number lines on terminal buffers
     autocmd TermOpen * :set nonumber norelativenumber
   augroup END
+
+
+" press <esc> to cancel.
+nmap f <Plug>(coc-smartf-forward)
+nmap F <Plug>(coc-smartf-backward)
+nmap ; <Plug>(coc-smartf-repeat)
+nmap , <Plug>(coc-smartf-repeat-opposite)
+
+augroup Smartf
+  autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#6638F0
+  autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
+augroup end
+
+
+let g:rainbow_active = 1
+
+
+let g:jsdoc_input_description = 1
+let g:jsdoc_enable_es6 = 1
+let g:jsdoc_underscore_private = 1
+
+
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+"augroup javascript_folding
+  "au!
+  "au FileType javascript setlocal foldmethod=syntax
+"augroup END

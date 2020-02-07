@@ -1,26 +1,82 @@
 {
-  "snippets.shortcut": "SY",
-  "snippets.extends": {
-    "cpp": ["c"],
-    "javascriptreact": ["javascript"],
-    "typescript": ["javascript"],
-    "svelte": ["html","javascript","css","scss"]
-  },
 
-
-  "coc.preferences.formatOnType": true,
+  // coc setting
+  "coc.preferences.snippets.enable": true,
+  "coc.preferences.snippetStatusText": "",
+  "coc.preferences.formatOnType": false,
   "coc.preferences.enableFloatHighlight": true,
-  "coc.preferences.snippetStatusText": "ext-orn",
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.colorSupport": true,
   "coc.preferences.rootPatterns": [".git", ".hg", ".projections.json"],
-
-  "project.rootPatterns": [".git"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "svg"    // coc-svg support svg format
+  ],
 
   "npm.binPath": "yarn",
 
-  "emmet.showExpandedAbbreviation": "always",
 
+  // vimlsp
+  "vimlsp.indexes.runtimepath": true,
+  "vimlsp.indexes.gap": 10,
+  "vimlsp.indexes.count": 3,
+  "vimlsp.suggest.fromVimruntime": true,
+  "vimlsp.suggest.fromRuntimepath": false,
+
+
+    // diagnostic
+  "diagnostic.infoSign":            "ღ",
+  "diagnostic.hintSign":            "ஐ",
+  "diagnostic.warningSign":         "»",
+  "diagnostic.errorSign":           "×",
+  "diagnostic.enable":              true,
+  "diagnostic.signOffset":          9999999,
+  "diagnostic.highlightOffset":     9999999,
+  "diagnostic.refreshOnInsertMode": true,
+
+  "project.rootPatterns": [".git"],
+
+  // suggest
+  "suggest.detailField": "abbr",
+  "suggest.maxCompleteItemCount": 50,
+  "suggest.detailMaxLength": 30,
+  "suggest.maxPreviewWidth": 80,
+  "suggest.triggerAfterInsertEnter": false,
+  "suggest.timeout": 500,
+  "suggest.noselect": false,
+  "suggest.snippetIndicator": "★",
+//  "suggest.triggerCompletionWait": 100,
+  "suggest.echodocSupport": true,
+  "suggest.completionItemKindLabels": {
+    "keyword": "\uf1de",
+    "variable": "\ue79b",
+    "value": "\uf89f",
+    "operator": "\u03a8",
+    "function": "\u0192",
+    "reference": "\ufa46",
+    "constant": "\uf8fe",
+    "method": "\uf09a",
+    "struct": "\ufb44",
+    "class": "\uf0e8",
+    "interface": "\uf417",
+    "text": "\ue612",
+    "enum": "\uf435",
+    "enumMember": "\uf02b",
+    "module": "\uf40d",
+    "color": "\ue22b",
+    "property": "\ue624",
+    "field": "\uf9be",
+    "unit": "\uf475",
+    "event": "\ufacd",
+    "file": "\uf723",
+    "folder": "\uf114",
+    "snippet": "\ue60b",
+    "typeParameter": "\uf728",
+    "default": "\uf29c"
+  },
+
+
+  // explorer
+  "explorer.icon.expanded": "▾",
   "explorer.width": 30,
   "explorer.position": "right",
   "explorer.file.showHiddenFiles": true,
@@ -86,8 +142,8 @@
   "codeLens.enable": true,
   "codeLens.separator": "‣++",
 
-  "typescript.referencesCodeLens.enable": false,
-  "javascript.referencesCodeLens.enable":false ,
+  "typescript.referencesCodeLens.enable": true,
+  "javascript.referencesCodeLens.enable":true ,
   "typescript.implementationsCodeLens.enable": true,
   "javascript.implementationsCodeLens.enable": true,
   "javascript.validate.enable":true,
@@ -97,60 +153,42 @@
   "tsserver.npm": "yarn",
   "tsserver.trace.server": "messages",
 
-  "diagnostic.messageTarget": "float",
-  "diagnostic.virtualText": true,
-  "diagnostic.checkCurrentLine": true,
-  "diagnostic.infoSign": "ღ",
-  "diagnostic.hintSign": "ஐ",
-  "diagnostic.warningSign": "⚠",
-  "diagnostic.errorSign": "✖",
-  "diagnostic.enable": true,
-  "diagnostic.signOffset": 9999999,
-  "diagnostic.highlightOffset": 9999999,
-  "diagnostic.refreshOnInsertMode":false ,
-
-  "suggest.triggerAfterInsertEnter": true,
-  "suggest.timeout": 500,
-  "suggest.noselect": true,
-  "suggest.snippetIndicator": "★",
-  "suggest.triggerCompletionWait": 100,
-  "suggest.echodocSupport": true,
-  "suggest.completionItemKindLabels": {
-    "keyword": "\uf1de",
-    "variable": "\ue79b",
-    "value": "\uf89f",
-    "operator": "\u03a8",
-    "function": "\u0192",
-    "reference": "\ufa46",
-    "constant": "\uf8fe",
-    "method": "\uf09a",
-    "struct": "\ufb44",
-    "class": "\uf0e8",
-    "interface": "\uf417",
-    "text": "\ue612",
-    "enum": "\uf435",
-    "enumMember": "\uf02b",
-    "module": "\uf40d",
-    "color": "\ue22b",
-    "property": "\ue624",
-    "field": "\uf9be",
-    "unit": "\uf475",
-    "event": "\ufacd",
-    "file": "\uf723",
-    "folder": "\uf114",
-    "snippet": "\ue60b",
-    "typeParameter": "\uf728",
-    "default": "\uf29c"
+  // snippets
+  "snippets.shortcut": "SY",
+  "snippets.ultisnips.enable": false,
+  "snippets.loadFromExtensions": true,
+  
+  "snippets.extends": {
+    "cpp": ["c"],
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"],
+    "svelte": ["html","javascript","css","scss"]
   },
 
-  "prettier.requireConfig": false,
-  "prettier.eslintIntegration": false,
-  "prettier.statusItemText": "Pretty",
-  "prettier.proseWrap": "always",
+  // emment
+  "emmet.showAbbreviationSuggestions": true,
 
-  "eslint.enable": true,
-  "eslint.filetypes": [
+  // prettier
+  "prettier.proseWrap": "always",
+  "prettier.eslintIntegration": true,
+  "prettier.tslintIntegration": true,
+  "prettier.stylelintIntegration": true,
+  "prettier.statusItemText": "",
+
+  // pairs
+  "pairs.enableCharacters": [
+    "(",
+    "[",
+    "{",
+    "'",
+    "\"",
+    "`"
+  ],
+
+  // eslint
+ "eslint.filetypes": [
     "javascript",
+    "javascript.jsx",
     "javascriptreact",
     "typescript",
     "typescriptreact",
@@ -158,7 +196,37 @@
   ],
   "eslint.trace.server": "messages",
   "eslint.packageManager": "yarn",
-  "eslint.options": {
-    "configFile": "/home/utku2/nWork/carbon-components-svelte/.eslintrc.json"
-  }
+//  "eslint.options": {
+//    "configFile": "/home/utku2/nWork/carbon-components-svelte/.eslintrc.json"
+//  }
+
+    // smartf
+  "smartf.wordJump": false,
+  "smartf.jumpOnTrigger": true,
+  "smartf.charactersIgnoreByNavigator": [
+    "a",
+    "A",
+    "i",
+    "I",
+    "d",
+    "D",
+    "c",
+    "C",
+    "s",
+    "S",
+    "x",
+    "r",
+    "y",
+    "p",
+    "P",
+    "v",
+    "g",
+    "h",
+    "j",
+    "k",
+    "l",
+    "*",
+    "%"
+  ],
+  "coc-webpack.enable": true
 }

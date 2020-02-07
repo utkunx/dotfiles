@@ -154,7 +154,7 @@
 		exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11
 
 	# Wallpaper-utku2#
-		exec --no-startup-id xwallpaper --daemon --debug --zoom /home/utku2/Pictures/.wallpaper/gece-uzay.jpg
+		exec --no-startup-id xwallpaper --daemon --debug --zoom /home/utku2/Pictures/.wallpaper/gunes-zoom.jpg
 	# chromium ve webstorm #
 	# exec --no-startup-id chromium #
 	 # exec --no-startup-id webstorm #
@@ -188,9 +188,9 @@
 		bindsym Print exec --no-startup-id ~/.scripts/screenshot.sh
 
 	# Audio - XF86 bindings #
-		bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 2
-		bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 2
-		bindsym XF86AudioMute exec --no-startup-id pamixer -t
+		bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+		bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+		bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 		bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 		bindsym XF86AudioNext exec --no-startup-id playerctl next
 		bindsym XF86AudioPrev exec --no-startup-id playerctl previous
@@ -334,7 +334,7 @@
 	# Audio (WS9) #
 	#for_window [class="Spotify"] move to workspace $ws9, workspace --no-auto-back-and-forth $ws9 #
 
-		for_window [class="Spotify"] move to workspace $ws9
+		for_window [class="Spotify"] move to workspace $ws1
 
 	# Video (WS10) #
 		assign [class="Gtk-youtube-viewer"] workspace $ws10

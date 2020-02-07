@@ -94,9 +94,13 @@ plugins=(
 	history-substring-search
 	)
 
-autoload -U promptinit; promptinit
-prompt spaceship
+#autoload -U promptinit; promptinit
+#prompt spaceship
 
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
 
 # Completion for kitty
 #kitty + complete setup zsh | source /dev/stdin
@@ -135,7 +139,6 @@ source $ZSH/oh-my-zsh.sh
 alias ls="ls --color=always"
 
 # Nvim environment variables
-export EDITOR=nvim
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 # Locale environment variables
