@@ -1,11 +1,11 @@
 # Set the window layout for the current tab
 #layout tall
 # Set the working directory for windows in the current tab
-cd /home/utku2/.config/
-#
-title config ide
+cd /home/utku2/zWork/ca/carbon-components-svelte/
+
+title svelte ide
 # Create a window and run the specified command in it
-launch nvim -c 'CocCommand session.load dotfiles'
+launch nvim package.json
 # Create a window with some environment variables set and run
 # vim in it
 #launch env FOO=BAR nvim
@@ -14,5 +14,7 @@ launch nvim -c 'CocCommand session.load dotfiles'
 #launch irssi --profile x
 #
 new_tab zsh
-cd /home/utku2/.config/
-#launch yarn start
+
+cd /home/utku2/zWork/ca/carbon-components-svelte/
+
+launch yarn start
