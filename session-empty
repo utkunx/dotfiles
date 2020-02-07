@@ -1,20 +1,26 @@
-# Set the window layout for the current tab
-#layout tall
-# Set the working directory for windows in the current tab
-cd /home/utku2/zWork/ca/carbon-components-svelte/
-
-title svelte ide
-# Create a window and run the specified command in it
-launch nvim package.json
-# Create a window with some environment variables set and run
-# vim in it
-#launch env FOO=BAR nvim
-# Set the title for the next window
-#title Chat with x
-#launch irssi --profile x
+# 2
 #
-new_tab zsh
-
+# 2.1
+new_tab storybook,s?
+#
+title root-storybook
+#
 cd /home/utku2/zWork/ca/carbon-components-svelte/
-
+#
 launch yarn start
+# 2.2
+cd /home/utku2/zWork/ca/carbon-components-svelte/palimpsest/
+#title palim-storybook
+launch yarn start
+#
+# 2.3
+#new_window hello
+title zalimm
+cd /home/utku2/zWork/ca/carbon-components-svelte/zalim/
+#
+#title zalim
+#
+launch yarn start
+#
+#
+

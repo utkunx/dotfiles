@@ -1,20 +1,67 @@
-# Set the window layout for the current tab
-#layout tall
-# Set the working directory for windows in the current tab
-cd /home/utku2/zWork/ca/carbon-components-svelte/
-
-title svelte ide
-# Create a window and run the specified command in it
-launch nvim package.json
-# Create a window with some environment variables set and run
-# vim in it
-#launch env FOO=BAR nvim
-# Set the title for the next window
-#title Chat with x
-#launch irssi --profile x
 #
-new_tab zsh
-
+# shortcut $Mod+b
+#
+#-----------------------------------------------------------
+# 1
 cd /home/utku2/zWork/ca/carbon-components-svelte/
-
+#
+title svelte ide
+#
+launch nvim -c 'CocCommand session.load svelte'
+#
+new_tab svelte yarn
+#
+cd /home/utku2/zWork/ca/carbon-components-svelte/
+#
 launch yarn start
+#-----------------------------------------------------------
+# 2
+new_tab
+#
+cd /home/utku2/zWork/ca/carbon-components-svelte/palimpsest/
+#
+title palimpsest
+#
+launch nvim -c 'CocCommand session.load palimpsest'
+#
+new_tab
+#
+cd /home/utku2/zWork/ca/carbon-components-svelte/palimpsest/
+#
+title palim yarn
+#
+launch yarn start
+#----------------------------------------------------------
+# 3
+new_tab
+#
+cd /home/utku2/zWork/ca/carbon-components-svelte/zalim/
+#
+title zalim ide
+#
+launch nvim -c 'CocCommand session.load zalim'
+#new_window hello
+new_tab
+#
+cd /home/utku2/zWork/ca/carbon-components-svelte/zalim/
+#
+title zalim yarn
+#
+launch yarn start
+#----------------------------------------------------------
+# 4
+new_tab
+#
+cd /home/utku2/zWork/hn.svelte.dev/
+#
+title hnclone ide
+#
+launch nvim -c 'CocCommand session.load hn-clone'
+#
+new_tab
+#
+cd /home/utku2/zWork/hn.svelte.dev/
+#
+title hn-clone-zsh
+#
+launch zsh
