@@ -5,63 +5,63 @@
 # 1
 cd /home/utku2/zWork/ca/carbon-components-svelte/
 #
-title svelte ide
+title ide svelte
 #
 launch nvim -c 'CocCommand session.load svelte'
 #
-new_tab svelte yarn
+new_tab yarn-svelte
 #
 cd /home/utku2/zWork/ca/carbon-components-svelte/
 #
 launch yarn start
 #-----------------------------------------------------------
 # 2
-new_tab
+new_tab ide-palimpsest
+
 #
 cd /home/utku2/zWork/ca/carbon-components-svelte/palimpsest/
 #
-title palimpsest
+#title ide palimpsest#
 #
 launch nvim -c 'CocCommand session.load palimpsest'
 #
-new_tab
+new_tab yarn-palimpsest
 #
 cd /home/utku2/zWork/ca/carbon-components-svelte/palimpsest/
 #
-title palim yarn
-#
+#title#
 launch yarn start
 #----------------------------------------------------------
 # 3
-new_tab
+new_tab ide-zalim
+
 #
 cd /home/utku2/zWork/ca/carbon-components-svelte/zalim/
 #
-title zalim ide
-#
+# title #
 launch nvim -c 'CocCommand session.load zalim'
-#new_window hello
-new_tab
+#
+new_tab Yyarn-zalim
 #
 cd /home/utku2/zWork/ca/carbon-components-svelte/zalim/
-#
-title zalim yarn
 #
 launch yarn start
+#title yarn-zalim#
 #----------------------------------------------------------
 # 4
-new_tab
+new_tab ide-hnclone
 #
 cd /home/utku2/zWork/hn.svelte.dev/
 #
-title hnclone ide
+#title ide hnclone#
 #
 launch nvim -c 'CocCommand session.load hn-clone'
 #
-new_tab
+new_tab yarn-hnclone
+
 #
 cd /home/utku2/zWork/hn.svelte.dev/
 #
-title hn-clone-zsh
+#title yarn hnclone#
 #
 launch zsh

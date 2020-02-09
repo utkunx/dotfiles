@@ -40,11 +40,12 @@
   "suggest.maxCompleteItemCount": 50,
   "suggest.detailMaxLength": 30,
   "suggest.maxPreviewWidth": 80,
-  "suggest.triggerAfterInsertEnter": false,
+  "suggest.triggerAfterInsertEnter":true,
+  "suggest.autoTrigger": "always",
   "suggest.timeout": 500,
   "suggest.noselect": false,
-  "suggest.snippetIndicator": "★",
-//  "suggest.triggerCompletionWait": 100,
+  "suggest.snippetIndicator": " ★",
+ "suggest.triggerCompletionWait": 100,
   "suggest.echodocSupport": true,
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
@@ -157,7 +158,6 @@
   "snippets.shortcut": "SY",
   "snippets.ultisnips.enable": false,
   "snippets.loadFromExtensions": true,
-  
   "snippets.extends": {
     "cpp": ["c"],
     "javascriptreact": ["javascript"],

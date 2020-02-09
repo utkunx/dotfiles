@@ -154,7 +154,7 @@
 		exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11
 
 	# Wallpaper-utku2#
-		exec --no-startup-id xwallpaper --daemon --debug --zoom /home/utku2/Pictures/.wallpaper/gunes-zoom.jpg
+		exec --no-startup-id xwallpaper --daemon --debug --zoom /home/utku2/Pictures/.wallpaper/abc.jpg
 	# chromium ve webstorm #
 	# exec --no-startup-id chromium #
 	 # exec --no-startup-id webstorm #
@@ -363,10 +363,12 @@
 # my config #
 bindsym $Mod+Return exec kitty
 
+bindsym $Mod+c exec --no-startup-id chromium
+bindsym $Mod+v exec --no-startup-id kitty --session /home/utku2/dotfiles/session-config
+bindsym $Mod+b exec --no-startup-id kitty --session /home/utku2/dotfiles/session-svelte
 
 bindsym $Mod+f exec --no-startup-id kitty tmux
 bindsym $Mod+Shift+Return exec kitty nvim
-bindsym $Mod+c exec --no-startup-id chromium
 
 # bindsym $Mod+f exec --no-startup-id kitty nvim -c ":terminal"
 

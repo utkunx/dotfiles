@@ -14,23 +14,23 @@ Plug 'ntpeters/vim-better-whitespace'
 " 43 - show whitespaces in red
 
 " auto-close plugin
-Plug 'rstacruz/vim-closer'
+"Plug 'rstacruz/vim-closer'
 
 " Improved motion in Vim
-Plug 'easymotion/vim-easymotion'
+"Plug 'easymotion/vim-easymotion'
 
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Denite - Fuzzy finding, buffer management
-Plug 'Shougo/denite.nvim'
+" Plug 'Shougo/denite.nvim'
 
 " Snippet support
-"Plug 'Shougo/neosnippet'
-"Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 " Print function signatures in echo area
-Plug 'Shougo/echodoc.vim'
+"Plug 'Shougo/echodoc.vim'
 
 
 
@@ -43,7 +43,7 @@ Plug 'junegunn/fzf.vim'
 
 " tester tester
 Plug 'heavenshell/vim-jsdoc'
-Plug 'pangloss/vim-javascript'
+"Plug 'pangloss/vim-javascript'
 " Plug 'kkoomen/vim-doge'
 " kullanmayi beceremedik
 
@@ -89,8 +89,8 @@ Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 
 " ???
-"Plug 'prabirshrestha/async.vim'
-"Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
 
 " 75 - Editorconfig file support. see https://editorconfig.org/
 Plug 'editorconfig/editorconfig-vim'
@@ -159,7 +159,8 @@ set nocursorline
 
 " Disable line/column number in status line
 " Shows up in preview window when airline is disabled if not
-set noruler
+"set noruler
+set ruler
 
 " Only one line for command line
 set cmdheight=1
