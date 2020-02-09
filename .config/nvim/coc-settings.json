@@ -36,10 +36,12 @@
   "project.rootPatterns": [".git"],
 
   // suggest
+  "suggest.enablePreview": true,
+  "suggest.floatEnable": true,
   "suggest.detailField": "abbr",
-  "suggest.maxCompleteItemCount": 50,
-  "suggest.detailMaxLength": 30,
-  "suggest.maxPreviewWidth": 80,
+  "suggest.maxCompleteItemCount": 70,
+  "suggest.detailMaxLength": 40,
+  "suggest.maxPreviewWidth": 90,
   "suggest.triggerAfterInsertEnter":true,
   "suggest.autoTrigger": "always",
   "suggest.timeout": 500,
